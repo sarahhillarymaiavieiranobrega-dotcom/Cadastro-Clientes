@@ -90,6 +90,7 @@ public class Pcadastro extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel25 = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();
+        Salvar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -510,6 +511,13 @@ public class Pcadastro extends javax.swing.JFrame {
 
         jPasswordField2.setText("jPasswordField2");
 
+        Salvar.setText("Salvar");
+        Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalvarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -529,6 +537,10 @@ public class Pcadastro extends javax.swing.JFrame {
                         .addGap(0, 434, Short.MAX_VALUE))
                     .addComponent(jPasswordField2))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Salvar)
+                .addGap(53, 53, 53))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -549,7 +561,9 @@ public class Pcadastro extends javax.swing.JFrame {
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(350, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Salvar)
+                .addContainerGap(309, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -607,6 +621,118 @@ public class Pcadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField21ActionPerformed
 
+    private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
+ 
+
+    String codigo = jTextField1.getText();
+    String nomeCompleto = jTextField2.getText();
+    String contato = jTextField3.getText();
+    boolean ativo = jCheckBox1.isSelected();
+
+    String cpf = jTextField4.getText();
+    String identidade = jTextField5.getText();
+    String dataNascimento = jTextField6.getText();
+    String cnpj = jTextField7.getText();
+    String inscricaoEstadual = jTextField8.getText();
+
+    String endereco = jTextField9.getText();
+    String numero = jTextField10.getText();
+    String complemento = jTextField11.getText();
+    String cep = jTextField12.getText();
+    String bairro = jTextField13.getText();
+    String cidade = jTextField14.getText();
+
+    String estado = "";
+    if (jComboBox1.getSelectedItem() != null) {
+        estado = jComboBox1.getSelectedItem().toString();
+    }
+
+    String sexo = "";
+
+    if (jRadioButton1.isSelected()) {
+        sexo = "Masculino";
+    } else if (jRadioButton2.isSelected()) {
+        sexo = "Feminino";
+    }
+
+    String telefone = jTextField16.getText();
+    String fax = jTextField17.getText();
+    String celular = jTextField18.getText();
+    String email = jTextField19.getText();
+
+    String atividade = jTextField20.getText();
+
+    String preferencia = "";
+    if (jComboBox2.getSelectedItem() != null) {
+        preferencia = jComboBox2.getSelectedItem().toString();
+    }
+
+    String observacoes = jTextArea1.getText();
+
+    String emailLogin = jTextField21.getText();
+    String usuario = jTextField22.getText();
+
+    String senha = new String(jPasswordField1.getPassword());
+    String confirmarSenha =
+            new String(jPasswordField2.getPassword());
+
+    if (nomeCompleto.trim().isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(
+                this, "BEM-VINDO");
+        return;
+    }
+
+    if (senha.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(
+                this, "Digite uma senha.");
+        return;
+    }
+
+    if (!senha.equals(confirmarSenha)) {
+        javax.swing.JOptionPane.showMessageDialog(
+                this, "As senhas não são iguais.");
+        return;
+    }
+
+   CadstroPessoaFisica pessoa = new CadstroPessoaFisica(
+            codigo,
+            nomeCompleto,
+            contato,
+            ativo,
+            cpf,
+            dataNascimento,
+            identidade,
+            cnpj,
+            inscricaoEstadual,
+            endereco,
+            numero,
+            complemento,
+            cep,
+            bairro,
+            cidade,
+            estado,
+            sexo,
+            telefone,
+            fax,
+            celular,
+            email,
+            preferencia,
+            observacoes,
+            usuario,
+            senha,
+            confirmarSenha,
+            false
+    );
+
+    javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "Cadastro realizado com sucesso para: "
+            + pessoa.getNomeCompleto()
+    );
+
+  
+    }//GEN-LAST:event_SalvarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -643,6 +769,7 @@ public class Pcadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Salvar;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
